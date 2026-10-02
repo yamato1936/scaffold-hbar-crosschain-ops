@@ -1,0 +1,62 @@
+{
+  "name": "crosschain-ops",
+  "description": "Production-oriented tracking, replay, and reconciliation for Axelar-powered Hedera applications.",
+  "create-scaffold-hbar": {
+    "capabilities": {
+      "frontend": [
+        "nextjs-app"
+      ],
+      "solidityFramework": [
+        "none"
+      ],
+      "packageManager": [
+        "yarn"
+      ]
+    },
+    "defaults": {
+      "frontend": "nextjs-app",
+      "solidityFramework": "none",
+      "packageManager": "yarn"
+    },
+    "outro": {
+      "sections": [
+        {
+          "title": "Cross-Chain Ops",
+          "steps": [
+            {
+              "text": "The app boots in credential-free demo mode with deterministic Axelar + HCS fixtures."
+            },
+            {
+              "label": "Start the app",
+              "command": "{run:next:dev}"
+            },
+            {
+              "label": "Open the operations ledger",
+              "text": "Visit http://localhost:3000/operations"
+            },
+            {
+              "label": "Run the full local quality gate",
+              "command": "{run:check}"
+            }
+          ]
+        },
+        {
+          "title": "Live Hedera testnet",
+          "steps": [
+            {
+              "text": "Set HEDERA_OPERATOR_ID and HEDERA_OPERATOR_KEY only in your local shell. Never commit them."
+            },
+            {
+              "label": "Create the HCS operations topic",
+              "command": "{run:ops:hcs:create-topic}"
+            },
+            {
+              "label": "Publish a demo operation",
+              "command": "{run:ops:hcs:publish-demo}"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

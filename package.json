@@ -1,0 +1,28 @@
+{
+  "name": "scaffold-hbar-crosschain-ops",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/nextjs"
+    ]
+  },
+  "scripts": {
+    "lint": "yarn next:lint",
+    "test": "yarn workspace @crosschain-ops/nextjs test",
+    "check": "yarn lint && yarn next:check-types && yarn test && yarn next:build",
+    "next:dev": "yarn workspace @crosschain-ops/nextjs dev",
+    "next:build": "yarn workspace @crosschain-ops/nextjs build",
+    "next:serve": "yarn workspace @crosschain-ops/nextjs start",
+    "next:start": "yarn workspace @crosschain-ops/nextjs dev",
+    "next:lint": "yarn workspace @crosschain-ops/nextjs lint",
+    "next:check-types": "yarn workspace @crosschain-ops/nextjs check-types",
+    "ops:hcs:create-topic": "yarn workspace @crosschain-ops/nextjs hcs:create-topic",
+    "ops:hcs:publish-demo": "yarn workspace @crosschain-ops/nextjs hcs:publish-demo",
+    "ops:proof:verify": "yarn workspace @crosschain-ops/nextjs proof:verify"
+  },
+  "packageManager": "yarn@3.2.3",
+  "engines": {
+    "node": ">=20.18.3"
+  }
+}

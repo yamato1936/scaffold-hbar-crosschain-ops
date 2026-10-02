@@ -1,0 +1,34 @@
+{
+  "name": "@crosschain-ops/nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "check-types": "tsc --noEmit --incremental",
+    "test": "vitest run",
+    "hcs:create-topic": "tsx scripts/hcs-create-topic.ts",
+    "hcs:publish-demo": "tsx scripts/hcs-publish-demo.ts",
+    "proof:verify": "tsx scripts/verify-proof.ts"
+  },
+  "dependencies": {
+    "@hiero-ledger/sdk": "^2.80.0",
+    "next": "^15.2.8",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.50",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "eslint": "^9.23.0",
+    "eslint-config-next": "^15.2.3",
+    "tsx": "^4.20.0",
+    "typescript": "^5.8.2",
+    "vitest": "^3.2.0"
+  },
+  "packageManager": "yarn@3.2.3"
+}
