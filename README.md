@@ -111,8 +111,11 @@ yarn test
 yarn next:build
 yarn check
 
+yarn ops:replay
+yarn ops:verify-state
 yarn ops:hcs:create-topic
 yarn ops:hcs:publish-demo
+yarn ops:axelar:observe
 yarn ops:proof:verify
 ~~~
 
@@ -146,6 +149,23 @@ yarn ops:hcs:publish-demo
 ~~~
 
 Start the app with HEDERA_TOPIC_ID present. The server reads the event stream from Hedera Mirror Node and derives the operations view.
+
+Rebuild a local read-model snapshot from the same stream:
+
+~~~bash
+yarn ops:replay
+yarn ops:verify-state
+~~~
+
+After the corresponding Axelar GMP operation is visible publicly, anchor the external observation back into the HCS lifecycle:
+
+~~~bash
+export OPERATION_ID=bounty-proof-1
+export SOURCE_TX_HASH=0x...
+yarn ops:axelar:observe
+~~~
+
+The observation command is conservative: it writes an Axelar observation first, and writes destination-executed/reconciled events only when Axelar exposes destination execution evidence.
 
 The operator key is used only by CLI write scripts. Browser routes never receive it.
 
