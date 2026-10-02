@@ -1,0 +1,46 @@
+{
+  "name": "crosschain-ops-acceptance",
+  "description": "Critical browser-verifiable behavior for the Cross-Chain Ops template.",
+  "assertions": [
+    {
+      "id": "C1",
+      "severity": "critical",
+      "walletRequired": false,
+      "verifiableWithoutCredentials": true,
+      "statement": "The operations ledger renders useful cross-chain state without a wallet or environment variables.",
+      "howToVerify": "Open /operations. Confirm at least three operations are visible, the page is visibly labeled demo mode, and each row shows an operation id, destination chain, and status."
+    },
+    {
+      "id": "C2",
+      "severity": "critical",
+      "walletRequired": false,
+      "verifiableWithoutCredentials": true,
+      "statement": "Operation state is visibly derived from an ordered HCS-shaped event lifecycle.",
+      "howToVerify": "Open /operations/demo-complete. Confirm an Ordered HCS events section shows operation.initiated, axelar.observed, destination.executed, and operation.reconciled in ascending sequence order."
+    },
+    {
+      "id": "C3",
+      "severity": "critical",
+      "walletRequired": false,
+      "verifiableWithoutCredentials": true,
+      "statement": "A conflict between recorded destination execution and Axelar evidence is surfaced as a discrepancy.",
+      "howToVerify": "Open /operations/demo-discrepancy and confirm the reconciliation result is discrepancy. Also GET /api/reconcile/demo-discrepancy and confirm reconciliation.outcome is discrepancy."
+    },
+    {
+      "id": "C4",
+      "severity": "major",
+      "walletRequired": false,
+      "verifiableWithoutCredentials": true,
+      "statement": "The JSON API exposes a reusable read model rather than forcing consumers to parse HCS directly.",
+      "howToVerify": "GET /api/operations and confirm it returns operation objects with operationId, sourceTxHash, destinationChain, status, lastSequence, and events."
+    },
+    {
+      "id": "C5",
+      "severity": "major",
+      "walletRequired": false,
+      "verifiableWithoutCredentials": true,
+      "statement": "The repository documents and implements a live Mirror Node path that is activated by HEDERA_TOPIC_ID.",
+      "howToVerify": "Inspect packages/nextjs/lib/ops/read-model.ts and mirror.ts. Confirm HEDERA_TOPIC_ID switches from bundled fixtures to public Mirror Node topic pagination and validated payload decoding."
+    }
+  ]
+}

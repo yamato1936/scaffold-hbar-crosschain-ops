@@ -1,0 +1,32 @@
+name: crosschain-ops-smoke
+server:
+  command: yarn next:serve
+  url: http://localhost:3000
+  timeoutMs: 180000
+
+defaults:
+  timeoutMs: 60000
+  hydrationTimeoutMs: 60000
+  minBodyTextLength: 40
+  failOnConsoleError: true
+
+routes:
+  - name: home
+    path: /
+  - name: operations
+    path: /operations
+  - name: complete-operation
+    path: /operations/demo-complete
+  - name: discrepancy-operation
+    path: /operations/demo-discrepancy
+  - name: operations-api
+    path: /api/operations
+  - name: reconciliation-api
+    path: /api/reconcile/demo-complete
+
+forbidden:
+  visibleText:
+    - "Application error"
+    - "Unhandled Runtime Error"
+    - "Internal Server Error"
+    - "This page could not be found"

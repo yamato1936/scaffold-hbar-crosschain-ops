@@ -1,0 +1,64 @@
+schemaVersion: 2
+
+name: crosschain-ops
+description: >
+  Production-oriented tracking, replay, and reconciliation for Axelar-powered
+  Hedera applications. HCS is the ordered operation ledger, Mirror Node is the
+  public read path, and Axelar status is independent reconciliation evidence.
+
+baseline:
+  commands:
+    - name: install
+      command: yarn install
+      timeoutMs: 600000
+    - name: test
+      command: yarn test
+      timeoutMs: 300000
+    - name: build
+      command: yarn next:build
+      timeoutMs: 600000
+
+skills:
+  - hedera-consensus-service
+  - axelar-gmp
+
+validators:
+  static: .harness/validators/static.json
+  commands: .harness/validators/yarn.json
+  playwright: .harness/validators/playwright-smoke.yaml
+
+contract: .harness/acceptance-contract.json
+validator:
+  enabled: true
+
+constraints:
+  packageManager: yarn@3.2.3
+  workspaces:
+    - packages/nextjs
+
+forbiddenFiles:
+  - .env
+  - packages/nextjs/.env
+  - packages/nextjs/.env.local
+
+secretScan:
+  failOnFiles:
+    - .env
+    - packages/nextjs/.env
+    - packages/nextjs/.env.local
+  patterns:
+    - name: private-key-assignment
+      pattern: "(PRIVATE_KEY|OPERATOR_KEY)\\s*=\\s*(0x)?[0-9a-fA-F]{32,}"
+
+requiredFiles:
+  - template.json
+  - README.md
+  - AGENTS.md
+  - LICENSE
+  - packages/nextjs/lib/ops/reducer.ts
+  - packages/nextjs/lib/ops/reconcile.ts
+  - packages/nextjs/lib/ops/mirror.ts
+  - packages/nextjs/lib/ops/axelar.ts
+  - packages/nextjs/app/operations/page.tsx
+  - packages/nextjs/app/api/reconcile/[operationId]/route.ts
+  - proofs/testnet-proof.example.json

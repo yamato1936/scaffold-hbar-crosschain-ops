@@ -1,0 +1,11 @@
+{
+  "network": "testnet",
+  "hcsTopicId": "0.0.123456",
+  "hcsSequenceNumber": 1,
+  "hederaTransactionId": "0.0.123456@1790980000.000000001",
+  "mirrorNodeUrl": "https://testnet.mirrornode.hedera.com/api/v1/topics/0.0.123456/messages/1",
+  "hashScanUrl": "https://hashscan.io/testnet/transaction/0.0.123456@1790980000.000000001",
+  "axelarSourceTransactionHash": "0x...",
+  "axelarExplorerUrl": "https://axelarscan.io/gmp/...",
+  "destinationTransactionHash": "0x..."
+}

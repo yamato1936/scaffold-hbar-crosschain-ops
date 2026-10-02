@@ -1,0 +1,76 @@
+{
+  "name": "crosschain-ops-static",
+  "description": "Deterministic structural checks for the external Scaffold-HBAR template.",
+  "jsonAssertions": [
+    {
+      "file": "package.json",
+      "path": "packageManager",
+      "equals": "yarn@3.2.3"
+    },
+    {
+      "file": "template.json",
+      "path": "name",
+      "equals": "crosschain-ops"
+    },
+    {
+      "file": "template.json",
+      "path": "create-scaffold-hbar.defaults.frontend",
+      "equals": "nextjs-app"
+    },
+    {
+      "file": "template.json",
+      "path": "create-scaffold-hbar.defaults.solidityFramework",
+      "equals": "none"
+    }
+  ],
+  "fileAssertions": {
+    "required": [
+      "README.md",
+      "AGENTS.md",
+      "LICENSE",
+      "template.json",
+      "package.json",
+      "packages/nextjs/package.json",
+      "packages/nextjs/.env.example",
+      "packages/nextjs/lib/ops/reducer.ts",
+      "packages/nextjs/lib/ops/reconcile.ts",
+      "packages/nextjs/lib/ops/mirror.ts",
+      "packages/nextjs/lib/ops/axelar.ts",
+      "packages/nextjs/scripts/hcs-create-topic.ts",
+      "packages/nextjs/scripts/hcs-publish-demo.ts",
+      "proofs/testnet-proof.example.json",
+      ".github/workflows/quality.yml"
+    ],
+    "forbidden": [
+      ".env",
+      "packages/nextjs/.env",
+      "packages/nextjs/.env.local",
+      "pnpm-lock.yaml",
+      "package-lock.json"
+    ]
+  },
+  "textAssertions": [
+    {
+      "file": "README.md",
+      "contains": [
+        "npm create scaffold-hbar@latest",
+        "Hedera Consensus Service",
+        "Axelar GMP",
+        "Mirror Node",
+        "yarn next:dev",
+        "yarn test",
+        "reconciliation"
+      ]
+    },
+    {
+      "file": "AGENTS.md",
+      "contains": [
+        "HCS",
+        "Axelar",
+        "replay",
+        "Never expose",
+        "yarn next:build"
+      ]
+    }
+  ]
+}

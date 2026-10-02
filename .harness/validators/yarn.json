@@ -1,0 +1,41 @@
+{
+  "name": "crosschain-ops-yarn",
+  "description": "Commands that must pass without secrets or live network access.",
+  "requiresNoSecrets": true,
+  "forbiddenCommands": [
+    "npm install",
+    "pnpm install"
+  ],
+  "commands": [
+    {
+      "name": "install",
+      "command": "yarn install",
+      "timeoutMs": 600000,
+      "purpose": "Install the workspace."
+    },
+    {
+      "name": "lint",
+      "command": "yarn lint",
+      "timeoutMs": 300000,
+      "purpose": "Lint the Next.js app."
+    },
+    {
+      "name": "types",
+      "command": "yarn next:check-types",
+      "timeoutMs": 300000,
+      "purpose": "Type-check the app."
+    },
+    {
+      "name": "tests",
+      "command": "yarn test",
+      "timeoutMs": 300000,
+      "purpose": "Test deterministic replay and reconciliation."
+    },
+    {
+      "name": "build",
+      "command": "yarn next:build",
+      "timeoutMs": 600000,
+      "purpose": "Build the production app in credential-free demo mode."
+    }
+  ]
+}
