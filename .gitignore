@@ -8,4 +8,5 @@ coverage
 dist
 .DS_Store
 *.log
+.crosschain-ops/
 proofs/testnet-proof.json

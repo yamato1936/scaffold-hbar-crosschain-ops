@@ -17,8 +17,11 @@
     "next:start": "yarn workspace @crosschain-ops/nextjs dev",
     "next:lint": "yarn workspace @crosschain-ops/nextjs lint",
     "next:check-types": "yarn workspace @crosschain-ops/nextjs check-types",
+    "ops:replay": "yarn workspace @crosschain-ops/nextjs ops:replay",
+    "ops:verify-state": "yarn workspace @crosschain-ops/nextjs ops:verify-state",
     "ops:hcs:create-topic": "yarn workspace @crosschain-ops/nextjs hcs:create-topic",
     "ops:hcs:publish-demo": "yarn workspace @crosschain-ops/nextjs hcs:publish-demo",
+    "ops:axelar:observe": "yarn workspace @crosschain-ops/nextjs axelar:observe",
     "ops:proof:verify": "yarn workspace @crosschain-ops/nextjs proof:verify"
   },
   "packageManager": "yarn@3.2.3",

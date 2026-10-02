@@ -9,8 +9,11 @@
     "lint": "next lint",
     "check-types": "tsc --noEmit --incremental",
     "test": "vitest run",
+    "ops:replay": "tsx scripts/replay.ts",
+    "ops:verify-state": "tsx scripts/verify-state.ts",
     "hcs:create-topic": "tsx scripts/hcs-create-topic.ts",
     "hcs:publish-demo": "tsx scripts/hcs-publish-demo.ts",
+    "axelar:observe": "tsx scripts/axelar-observe.ts",
     "proof:verify": "tsx scripts/verify-proof.ts"
   },
   "dependencies": {

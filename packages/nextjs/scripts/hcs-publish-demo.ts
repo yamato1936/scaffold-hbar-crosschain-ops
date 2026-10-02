@@ -34,10 +34,10 @@ async function main() {
   const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 
   try {
-    const transaction = await new TopicMessageSubmitTransaction({
-      topicId,
-      message: JSON.stringify(payload),
-    }).execute(client);
+    const transaction = await new TopicMessageSubmitTransaction()
+      .setTopicId(topicId)
+      .setMessage(JSON.stringify(payload))
+      .execute(client);
 
     const receipt = await transaction.getReceipt(client);
     const record = await transaction.getRecord(client);
@@ -50,8 +50,10 @@ async function main() {
     console.log("Transaction ID:", transactionId || "unknown");
 
     if (transactionId) {
-      const hashscanId = transactionId.replace("@", "-").replace(".", "-");
-      console.log("HashScan transaction search:", "https://hashscan.io/testnet/transaction/" + hashscanId);
+      console.log(
+        "HashScan:",
+        "https://hashscan.io/testnet/transaction/" + encodeURIComponent(transactionId),
+      );
     }
   } finally {
     client.close();
