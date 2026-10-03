@@ -19,3 +19,6 @@ dist
 *.log
 .crosschain-ops/
 proofs/testnet-proof.json
+
+# TypeScript incremental build cache
+*.tsbuildinfo
