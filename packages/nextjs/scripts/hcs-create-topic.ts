@@ -1,8 +1,8 @@
 import {
   Client,
-  PrivateKey,
   TopicCreateTransaction,
 } from "@hiero-ledger/sdk";
+import { parseOperatorPrivateKey } from "../lib/hedera/private-key";
 
 function required(name: string): string {
   const value = process.env[name];
@@ -14,7 +14,7 @@ function required(name: string): string {
 
 async function main() {
   const operatorId = required("HEDERA_OPERATOR_ID");
-  const operatorKey = PrivateKey.fromString(required("HEDERA_OPERATOR_KEY"));
+  const operatorKey = parseOperatorPrivateKey(required("HEDERA_OPERATOR_KEY"));
   const client = Client.forTestnet().setOperator(operatorId, operatorKey);
 
   try {
