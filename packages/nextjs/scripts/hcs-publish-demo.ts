@@ -1,9 +1,9 @@
 import {
   Client,
-  PrivateKey,
   TopicId,
   TopicMessageSubmitTransaction,
 } from "@hiero-ledger/sdk";
+import { parseOperatorPrivateKey } from "../lib/hedera/private-key";
 import { operationEventPayloadSchema } from "../lib/ops/schema";
 
 function required(name: string): string {
@@ -16,7 +16,7 @@ function required(name: string): string {
 
 async function main() {
   const operatorId = required("HEDERA_OPERATOR_ID");
-  const operatorKey = PrivateKey.fromString(required("HEDERA_OPERATOR_KEY"));
+  const operatorKey = parseOperatorPrivateKey(required("HEDERA_OPERATOR_KEY"));
   const topicId = TopicId.fromString(required("HEDERA_TOPIC_ID"));
   const sourceTxHash = required("SOURCE_TX_HASH");
   const destinationChain = process.env.DESTINATION_CHAIN || "ethereum-sepolia";
