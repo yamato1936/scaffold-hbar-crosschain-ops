@@ -14,9 +14,9 @@ export default function HomePage() {
           <Link className="button primary" href="/operations">
             Explore demo operations
           </Link>
-          <a className="button" href="/api/operations">
+          <Link className="button" href="/api/operations">
             Open JSON API
-          </a>
+          </Link>
         </div>
       </section>
 
