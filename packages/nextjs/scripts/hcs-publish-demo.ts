@@ -19,14 +19,15 @@ async function main() {
   const operatorKey = parseOperatorPrivateKey(required("HEDERA_OPERATOR_KEY"));
   const topicId = TopicId.fromString(required("HEDERA_TOPIC_ID"));
   const sourceTxHash = required("SOURCE_TX_HASH");
-  const destinationChain = process.env.DESTINATION_CHAIN || "ethereum-sepolia";
+  const sourceChain = process.env.SOURCE_CHAIN || "avalanche-fuji";
+  const destinationChain = process.env.DESTINATION_CHAIN || "hedera-testnet";
 
   const payload = operationEventPayloadSchema.parse({
     schemaVersion: 1,
     operationId: process.env.OPERATION_ID || "live-" + Date.now(),
     type: "operation.initiated",
     provider: "axelar",
-    sourceChain: "hedera-testnet",
+    sourceChain,
     destinationChain,
     sourceTxHash,
   });
