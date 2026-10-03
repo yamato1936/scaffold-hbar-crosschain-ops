@@ -1,9 +1,9 @@
 import {
   Client,
-  PrivateKey,
   TopicId,
   TopicMessageSubmitTransaction,
 } from "@hiero-ledger/sdk";
+import { parseOperatorPrivateKey } from "../lib/hedera/private-key";
 import { fetchLiveAxelarSnapshot } from "../lib/ops/axelar";
 import { operationEventPayloadSchema } from "../lib/ops/schema";
 import type { OperationEventPayload } from "../lib/ops/types";
@@ -32,7 +32,7 @@ async function submit(
 
 async function main() {
   const operatorId = required("HEDERA_OPERATOR_ID");
-  const operatorKey = PrivateKey.fromString(required("HEDERA_OPERATOR_KEY"));
+  const operatorKey = parseOperatorPrivateKey(required("HEDERA_OPERATOR_KEY"));
   const topicId = TopicId.fromString(required("HEDERA_TOPIC_ID"));
   const sourceTxHash = required("SOURCE_TX_HASH");
   const operationId = required("OPERATION_ID");
